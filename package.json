@@ -1,0 +1,34 @@
+{
+  "name": "pdf-to-image-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KuhArt/pdf-to-image-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KuhArt/pdf-to-image-api/issues"
+  },
+  "homepage": "https://github.com/KuhArt/pdf-to-image-api#readme",
+  "dependencies": {
+    "@koa/router": "^10.0.0",
+    "axios": "^0.21.0",
+    "child-process-promise": "^2.2.1",
+    "gs": "https://github.com/sina-masnadi/node-gs/tarball/master",
+    "koa": "^2.13.0",
+    "koa-logger": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}

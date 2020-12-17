@@ -1,0 +1,13 @@
+version: '3.6'
+services:
+  pdf-to-image:
+    container_name: pdf-to-image
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"  
+
+networks:
+  ship:
+    name: ship-network
