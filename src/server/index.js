@@ -65,11 +65,6 @@ router.get('/', async (ctx) => {
       markIndex: 1,
     });
 
-    await profileCall({
-      func: () => resize({ imgDir: tmpdir, imgName }),
-      markIndex: 2,
-    });
-
     const readStream = fs.createReadStream(destImg);
 
     ctx.response.attachment('image.jpg');
