@@ -5,7 +5,6 @@ const os = require('os');
 const { PerformanceObserver, performance } = require('perf_hooks');
 const logger = require('koa-logger');
 const pdfToImg = require('../helpers/pdf-to-image');
-const { resize } = require('../helpers/imagemagick');
 const { downloadPdf, removeFile } = require('../helpers/fs');
 
 const app = new Koa();
@@ -51,8 +50,9 @@ router.get('/', async (ctx) => {
 
   const tmpdir = os.tmpdir();
   const dest = `${tmpdir}/${Date.now()}-temp-pdf.pdf`;
-  const imgName = `${Date.now()}-temp.jpg`;
+  const imgName = `${Date.now()}-temp`;
   const destImg = `${tmpdir}/${imgName}`;
+  const destImgWithFormat = `${tmpdir}/${imgName}.jpg`;
 
   try {
     await profileCall({
@@ -65,7 +65,7 @@ router.get('/', async (ctx) => {
       markIndex: 1,
     });
 
-    const readStream = fs.createReadStream(destImg);
+    const readStream = fs.createReadStream(destImgWithFormat);
 
     ctx.response.attachment('image.jpg');
     ctx.body = readStream;
@@ -76,7 +76,7 @@ router.get('/', async (ctx) => {
   } finally {
     perfObserver.disconnect();
     removeFile(dest);
-    removeFile(destImg);
+    removeFile(destImgWithFormat);
   }
 });
 
