@@ -9,6 +9,7 @@ const { downloadPdf, removeFile } = require('../helpers/fs');
 
 const app = new Koa();
 const router = new Router();
+const auth = require('./middlewares/auth');
 
 const perfMarks = [
   'pdfToImg.downloadPdf',
@@ -82,6 +83,7 @@ router.get('/', async (ctx) => {
 
 app
   .use(logger())
+  .use(auth())
   .use(router.routes());
 
 const PORT = 80;
