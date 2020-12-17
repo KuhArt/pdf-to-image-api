@@ -32,7 +32,6 @@ const profileCall = async ({ func, markIndex }) => {
 };
 
 router.get('/', async (ctx) => {
-  console.log(process.env.API_KEY);
   const perfObserver = new PerformanceObserver((items) => {
     items.getEntries().forEach((entry) => {
       console.log(`${entry.name} ->  ${entry.duration}`);
